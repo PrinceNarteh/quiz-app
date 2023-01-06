@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:quiz_app/answer.dart';
 import 'package:quiz_app/question.dart';
 
 void main() => runApp(const MyApp());
@@ -32,23 +33,20 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("Quiz"),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Question(questions[_questionIndex]),
-            ElevatedButton(
-              onPressed: _answerQuestion,
-              child: const Text("Answer One"),
-            ),
-            ElevatedButton(
-              onPressed: _answerQuestion,
-              child: const Text("Answer Two"),
-            ),
-            ElevatedButton(
-              onPressed: _answerQuestion,
-              child: const Text("Answer Three"),
-            ),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Question(questions[_questionIndex]),
+              Answer("Answer One", _answerQuestion),
+              const SizedBox(height: 8),
+              Answer("Answer Two", _answerQuestion),
+              const SizedBox(height: 8),
+              Answer("Answer Three", _answerQuestion)
+            ],
+          ),
         ),
       ),
     );
