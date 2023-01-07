@@ -14,10 +14,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
 
-  List<String> questions = [
-    "What's your favorite color?",
-    "What's your favorite food?",
-    "What's your favorite animal?",
+  List<Map<String, Object>> questions = [
+    {
+      "questionText": "What's your favorite color?",
+      "answers": ["Black", "Red", "Green", "White"]
+    },
+    {
+      "questionText": "What's your favorite food?",
+      "answers": ["Gobe", "Fried Rice", "Banku", "Jollof"]
+    },
+    {
+      "questionText": "What's your favorite animal?",
+      "answers": ["Cat", "Dog", "Rabbit", "Peacock"]
+    }
   ];
 
   void _answerQuestion() {
@@ -39,12 +48,11 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Question(questions[_questionIndex]),
-              Answer("Answer One", _answerQuestion),
-              const SizedBox(height: 8),
-              Answer("Answer Two", _answerQuestion),
-              const SizedBox(height: 8),
-              Answer("Answer Three", _answerQuestion)
+              Question(questions[_questionIndex]['questionText'] as String),
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) {
+                return Answer(answer, _answerQuestion);
+              }).toList()
             ],
           ),
         ),

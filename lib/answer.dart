@@ -8,23 +8,26 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: selectHandler,
-      child: Ink(
-        height: 50,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.all(
-            Radius.circular(5),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      child: InkWell(
+        onTap: selectHandler,
+        child: Ink(
+          height: 60,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.all(
+              Radius.circular(5),
+            ),
           ),
-        ),
-        child: Center(
-          child: Text(
-            answerText,
-            style: const TextStyle(
-              fontSize: 18,
-              color: Colors.white,
+          child: Center(
+            child: Text(
+              answerText,
+              style: const TextStyle(
+                fontSize: 19,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
