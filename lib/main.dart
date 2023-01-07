@@ -48,6 +48,10 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                "${_questionIndex + 1} / ${questions.length}",
+                style: const TextStyle(fontSize: 20),
+              ),
               Question(questions[_questionIndex]['questionText'] as String),
               ...(questions[_questionIndex]['answers'] as List<String>)
                   .map((answer) {
