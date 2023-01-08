@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:quiz_app/quiz.dart';
+import 'package:quiz_app/result.dart';
 
 void main() => runApp(const MyApp());
 
@@ -34,6 +35,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _restart() {
+    setState(() {
+      _questionIndex = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,22 +56,7 @@ class _MyAppState extends State<MyApp> {
                   answerQuestion: _answerQuestion,
                   questionIndex: _questionIndex,
                 )
-              : Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("You made it"),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _questionIndex = 0;
-                          });
-                        },
-                        child: const Text("Try again"),
-                      )
-                    ],
-                  ),
-                ),
+              : Result(restart: _restart),
         ),
       ),
     );
