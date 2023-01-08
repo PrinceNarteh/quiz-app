@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Answer extends StatelessWidget {
+class CustomBottom extends StatelessWidget {
   final String answerText;
   final VoidCallback selectHandler;
 
-  const Answer(this.answerText, this.selectHandler, {super.key});
+  const CustomBottom(this.answerText, this.selectHandler, {super.key});
 
   @override
   Widget build(BuildContext context) {
