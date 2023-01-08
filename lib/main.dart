@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:quiz_app/custom-bottom.dart';
-import 'package:quiz_app/question.dart';
+import 'package:quiz_app/quiz.dart';
 
 void main() => runApp(const MyApp());
 
@@ -45,21 +44,10 @@ class _MyAppState extends State<MyApp> {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: _questionIndex < questions.length
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "${_questionIndex + 1} / ${questions.length}",
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    Question(
-                        questions[_questionIndex]['questionText'] as String),
-                    ...(questions[_questionIndex]['answers'] as List<String>)
-                        .map((answer) {
-                      return CustomBottom(answer, _answerQuestion);
-                    }).toList()
-                  ],
+              ? Quiz(
+                  questions: questions,
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
                 )
               : Center(
                   child: Column(
